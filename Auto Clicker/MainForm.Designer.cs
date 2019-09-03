@@ -78,6 +78,10 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.PositionsGroupBox.SuspendLayout();
@@ -456,7 +460,7 @@
             // 
             this.textBox_minutes.Location = new System.Drawing.Point(140, 48);
             this.textBox_minutes.Name = "textBox_minutes";
-            this.textBox_minutes.Size = new System.Drawing.Size(100, 20);
+            this.textBox_minutes.Size = new System.Drawing.Size(36, 20);
             this.textBox_minutes.TabIndex = 14;
             this.textBox_minutes.Text = "Minute";
             // 
@@ -464,7 +468,7 @@
             // 
             this.textBox_hours.Location = new System.Drawing.Point(140, 19);
             this.textBox_hours.Name = "textBox_hours";
-            this.textBox_hours.Size = new System.Drawing.Size(100, 20);
+            this.textBox_hours.Size = new System.Drawing.Size(36, 20);
             this.textBox_hours.TabIndex = 15;
             this.textBox_hours.Text = "Hour";
             // 
@@ -472,13 +476,13 @@
             // 
             this.textBox_search.Location = new System.Drawing.Point(140, 74);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(100, 20);
+            this.textBox_search.Size = new System.Drawing.Size(36, 20);
             this.textBox_search.TabIndex = 16;
             this.textBox_search.Text = "Name";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(140, 100);
+            this.button3.Location = new System.Drawing.Point(182, 74);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 17;
@@ -505,6 +509,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.textBox_minutes);
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.textBox_hours);
@@ -512,10 +520,50 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Location = new System.Drawing.Point(12, 289);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(249, 129);
+            this.groupBox1.Size = new System.Drawing.Size(267, 129);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Timer for Groups";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(200, 100);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(61, 23);
+            this.button7.TabIndex = 21;
+            this.button7.Text = "Stop";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(137, 100);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(61, 23);
+            this.button6.TabIndex = 20;
+            this.button6.Text = "Run";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(182, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Save";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(182, 17);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Load";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox2
             // 
@@ -530,11 +578,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(400, 363);
+            this.label8.Location = new System.Drawing.Point(12, 421);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 13);
+            this.label8.Size = new System.Drawing.Size(343, 13);
             this.label8.TabIndex = 22;
-            this.label8.Text = "Coded by Cydoor";
+            this.label8.Text = "Coded by Cydoor! Find updates: http://github.com/CyDoor/AutoClicker";
             // 
             // MainForm
             // 
@@ -557,7 +605,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimizeBox = false;
-            this.Text = "Auto Clicker";
+           // this.Name = "MainForm";
+            this.Text = "Auto Clicker V 0.2";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.PositionsGroupBox.ResumeLayout(false);
@@ -627,6 +676,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button7;
     }
 }
 

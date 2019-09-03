@@ -62,6 +62,7 @@ namespace Auto_Clicker
         // Timers
         ListView Timers = new ListView();
         bool ThreadRun = false;
+        System.Timers.Timer timer = new System.Timers.Timer();
 
         #endregion
 
@@ -303,6 +304,7 @@ namespace Auto_Clicker
                     //Add item holding coordinates, right/left click and sleep time to list view
                     //holding all queued clicks
                     ListViewItem item = new ListViewItem(textBox_Name.Text);
+
                     item.SubItems.Add(QueuedXPositionTextBox.Text);
                     item.SubItems.Add(QueuedYPositionTextBox.Text);
                     string clickType = (RightClickCheckBox.Checked) == true ? "R" : "L";
@@ -392,7 +394,7 @@ namespace Auto_Clicker
             }
             catch (ThreadAbortException ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             
             }
             catch (Exception exc)
             {
@@ -671,30 +673,7 @@ namespace Auto_Clicker
 
         #region Timers
 
-        //Setup Timer
-        private bool SetUpTimer(TimeSpan alertTime,string str)
-        {
-            var runAt = DateTime.Today + alertTime;
-
-         //   var aTimer = new System.Timers.Timer(60 * 60 * 1000); //one hour in milliseconds
-    //        aTimer.Elapsed += new ElapsedEventHandler(_ => {});
-
-            if (runAt < DateTime.Now)
-            {
-
-                // Startuo( str);
-                return false;
-            }
-            else
-            {
-                //  MessageBox.Show("2");
-               // var autoEvent = new AutoResetEvent(false);
-                var dueTime = runAt - DateTime.Now;
-                label7.Invoke((EventHandler)delegate { label7.Text = dueTime.ToString(); });
-                var timer = new System.Threading.Timer(_ => Startuo(  str), null, dueTime,TimeSpan.Zero);
-                return true;
-            }
-        }
+        
 
         // Run it with timer
         private void Startuo( string str)
@@ -757,27 +736,17 @@ namespace Auto_Clicker
 
         }
 
-        // Start Timer
+        // Add Timer
         private void button3_Click_1(object sender, EventArgs e)
         {
             ListViewItem item = new ListViewItem(textBox_search.Text);
             item.SubItems.Add(textBox_hours.Text);
             item.SubItems.Add(textBox_minutes.Text);
-            item.SubItems.Add("n");
             Timers.Items.Add(item);
          
             listBox1.BeginUpdate();
             listBox1.Items.Add(textBox_search.Text + " @ " + textBox_hours.Text + ":" + textBox_minutes.Text);
             listBox1.EndUpdate();
-
-            if (ThreadRun != true)
-            {
-               var timer = new System.Timers.Timer();
-                timer.Interval = 1000 * 60;
-                timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-                timer.Start();
-                ThreadRun = true;
-            }
             
         }
 
@@ -807,6 +776,97 @@ namespace Auto_Clicker
             }
         }
 
+       
+        // RUN Timers
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (ThreadRun != true)
+            {
+                listBox2.Invoke(new MethodInvoker(delegate ()
+                {
+                    listBox2.Items.Add("Timers started...");
+                }));
+                
+                timer.Interval = 1000 * 60;
+                timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+                timer.Start();
+                ThreadRun = true;
+            }
+        }
+
+        //Stop Tiemr
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (ThreadRun == true)
+            {
+                timer.Stop();
+                listBox2.Invoke(new MethodInvoker(delegate ()
+                {
+                    listBox2.Items.Add("Timers stopped...");
+                }));
+            }
+        }
+
+        //Save Timer
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog name = new SaveFileDialog() { Filter = "Text Documents | *.txt" })
+            {
+                if (name.ShowDialog() == DialogResult.OK)
+                {
+                    using (TextWriter tw = new StreamWriter(new FileStream(name.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                        foreach (ListViewItem item in Timers.Items)
+                        {
+                            tw.WriteLine(item.Text + "," + item.SubItems[1].Text + "," + item.SubItems[2].Text);
+                        }
+                        MessageBox.Show("Done");
+                    }
+                }
+            }
+        }
+
+        // Load Tiemr
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open Text File";
+            theDialog.Filter = "TXT files|*.txt";
+            theDialog.InitialDirectory = @".";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = theDialog.OpenFile()) != null)
+                    {
+                        using (var sr = new System.IO.StreamReader(myStream)) // Wrapped it up in a using statement so it is disposed of automagically
+                        {
+                            string line = string.Empty;
+                            while ((line = sr.ReadLine()) != null) // Loop while there is more data to read
+                            {
+                                string[] lineItems = line.Split(','); // Split only the single line
+
+                                ListViewItem item = new ListViewItem(lineItems[0].ToString());
+                                item.SubItems.Add(lineItems[1].ToString());
+                                item.SubItems.Add(lineItems[2].ToString());
+                                Timers.Items.Add(item);
+
+                                listBox1.BeginUpdate();
+                                listBox1.Items.Add(lineItems[0].ToString() + " @ " + lineItems[1].ToString() + ":" + lineItems[2].ToString());
+                                listBox1.EndUpdate();
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+        }
+
         #endregion
 
 
@@ -819,7 +879,7 @@ namespace Auto_Clicker
                 {
                     using (TextWriter tw = new StreamWriter(new FileStream(name.FileName, FileMode.Create), Encoding.UTF8))
                     {
-                        foreach (ListViewItem item in PositionsListView.Items)
+                        foreach (ListViewItem item in Timers.Items)
                         {
                             tw.WriteLine(item.Text + "," + item.SubItems[1].Text + "," + item.SubItems[2].Text + "," + item.SubItems[3].Text + "," + item.SubItems[4].Text);
                         }
@@ -874,6 +934,6 @@ namespace Auto_Clicker
             }
         }
 
-   
+       
     }
 }

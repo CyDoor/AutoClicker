@@ -13,6 +13,7 @@ Programm have:
 * Define Group of Clicks
 * Timers when to Start
 
+
 --------------------------------------------------------
 
 ♦ WHY SHOULD I USE IT ?
@@ -28,3 +29,24 @@ best, this bot will help you alot while doing clicks for you automaticly
 - Automate Browser games
 - Android Emulator (Bluestacks / Nox)
 - Games on Steam 
+
+
+--------------------------------------------------------
+
+# Changelog
+
+V 0.2:
+
+- Added Load & Save Timers
+- Added Buttons to Run & Stop Timer
+- Fixed Start & Stop Hotkeys
+- Added Version Tag in Window Text
+
+V 0.1
+
+- Load & Save Cursor Points
+- Name Group of Points
+- Timers added
+- Console Added to see when Timers run
+
+

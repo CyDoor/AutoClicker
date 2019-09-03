@@ -261,11 +261,11 @@ namespace Auto_Clicker
             {
                 AddPositionButton_Click(null, null);
             }
-            else if (e.KeyCode == Keys.F2)
+            else if (e.KeyCode == Keys.F3)
             {
                 StartClickingButton_Click(null, null);
             }
-            else if (e.KeyCode == Keys.F2)
+            else if (e.KeyCode == Keys.F4)
             {
                 StopClickingButton_Click(null, null);
             }

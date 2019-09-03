@@ -813,13 +813,19 @@ namespace Auto_Clicker
         //save
         private void button1_Click_1(object sender, EventArgs e)
         {
-            using (TextWriter tw = new StreamWriter(new FileStream("test.txt", FileMode.Create), Encoding.UTF8))
+            using (SaveFileDialog name = new SaveFileDialog() { Filter = "Text Documents | *.txt" })
             {
-                foreach (ListViewItem item in PositionsListView.Items)
+                if (name.ShowDialog() == DialogResult.OK)
                 {
-                    tw.WriteLine(item.Text + "," + item.SubItems[1].Text + "," + item.SubItems[2].Text + "," + item.SubItems[3].Text + "," + item.SubItems[4].Text);
+                    using (TextWriter tw = new StreamWriter(new FileStream(name.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                        foreach (ListViewItem item in PositionsListView.Items)
+                        {
+                            tw.WriteLine(item.Text + "," + item.SubItems[1].Text + "," + item.SubItems[2].Text + "," + item.SubItems[3].Text + "," + item.SubItems[4].Text);
+                        }
+                        MessageBox.Show("Done");
+                    }
                 }
-                MessageBox.Show("Done");
             }
         }
 

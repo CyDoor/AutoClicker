@@ -11,6 +11,7 @@ tmp/
 *.bak
 *.swp
 *.lock
+*.sqlite
 *~.nib
 local.properties
 .classpath

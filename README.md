@@ -1,6 +1,8 @@
 ﻿# AutoClicker
 Better Auto Clicker
 
+![Screenshot](https://i.ibb.co/RY77dTH/Auto-Clicker.png)
+
 Programm have:
 
 * User Friendly Interface

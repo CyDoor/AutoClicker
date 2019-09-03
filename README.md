@@ -13,14 +13,14 @@ Programm have:
 
 --------------------------------------------------------
 
-♦WHY SHOUDL I USE IT ?
+♦ WHY SHOULD I USE IT ?
 
 It is a bot, if you get bored of clicking around or if you just wanna be the 
 best, this bot will help you alot while doing clicks for you automaticly
 
 --------------------------------------------------------
 
-♦For what to use ?
+♦ For what to use ?
 
 - Use it for Cookie Clicker 
 - Automate Browser games

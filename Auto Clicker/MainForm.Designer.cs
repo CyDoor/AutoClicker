@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PositionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SleepTimeTextBox = new System.Windows.Forms.TextBox();
             this.QueuedYPositionTextBox = new System.Windows.Forms.TextBox();
             this.textBox_Name = new System.Windows.Forms.TextBox();
@@ -76,9 +77,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.PositionsGroupBox.SuspendLayout();
             this.ListViewContextMenu.SuspendLayout();
             this.CurrentPosGroupBox.SuspendLayout();
@@ -109,6 +110,15 @@
             this.PositionsGroupBox.TabIndex = 0;
             this.PositionsGroupBox.TabStop = false;
             this.PositionsGroupBox.Text = "Cursor Positions";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 286);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Group Name:";
             // 
             // SleepTimeTextBox
             // 
@@ -493,15 +503,6 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Status";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 286);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Group Name:";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBox_minutes);
@@ -526,11 +527,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Console:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(400, 363);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Coded by Cydoor";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 434);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
@@ -546,7 +557,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimizeBox = false;
-         //   this.Name = "MainForm";
+            this.Name = "MainForm";
             this.Text = "Auto Clicker";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
@@ -616,6 +627,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label8;
     }
 }
 
